@@ -38,13 +38,14 @@ type Marker struct {
 	value   string
 }
 
-// NewMarkerFor creates a new marker customized for the specific file
-// Supported file extensions: .go, .yaml, .yml
+// NewMarkerFor creates a new marker customized for the specific file. The created marker
+// is prefixed with `+kubebuilder:scaffold:` the default prefix for kubebuilder.
+// Supported file extensions: .go, .yaml, .yml.
 func NewMarkerFor(path string, value string) Marker {
 	return NewMarkerWithPrefixFor(kbPrefix, path, value)
 }
 
-// NewMarkerWithPrefixFor creates a new prefixed marker customized for the specific file
+// NewMarkerWithPrefixFor creates a new custom prefixed marker customized for the specific file
 // Supported file extensions: .go, .yaml, .yml
 func NewMarkerWithPrefixFor(prefix string, path string, value string) Marker {
 	ext := filepath.Ext(path)
